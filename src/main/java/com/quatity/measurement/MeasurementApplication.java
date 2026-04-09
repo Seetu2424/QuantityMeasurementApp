@@ -1,6 +1,5 @@
 package com.quatity.measurement;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.quatity.measurement.enums.LengthUnit;
@@ -11,16 +10,9 @@ public class MeasurementApplication {
 	
 	public static void main(String[] args) {
 	
-		SpringApplication.run(MeasurementApplication.class, args);
+		QuantityLength q1 = new QuantityLength(2.0, LengthUnit.CENTIMETERS);
+		QuantityLength q2 = new QuantityLength(2.0, LengthUnit.YARDS);
 
-
-		double value1 = 1.0;
-		LengthUnit unit1 = LengthUnit.FEET;
-
-		double value3 = 12.0;
-		LengthUnit unit2 = LengthUnit.INCH;
-
-		QuantityLength quantityLength = new QuantityLength(value1,unit1);
-		QuantityLength quantityLength1 = new QuantityLength(value3, unit2);
-	}
+		System.out.println(q1.equals(q2));
+		}
 }
