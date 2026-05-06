@@ -13,6 +13,7 @@ public class MeasurementApplication {
 		
 		public Feet(double value) {
 			this.value = value;
+			
 		}
 		
 		@Override
