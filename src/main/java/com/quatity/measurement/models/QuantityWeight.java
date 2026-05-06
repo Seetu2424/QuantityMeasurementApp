@@ -38,4 +38,5 @@ public boolean equals(Object o) {
     }
     return this.quantity.equals(((QuantityWeight) o).quantity);
 }
+
 }
