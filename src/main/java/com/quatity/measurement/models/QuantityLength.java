@@ -4,7 +4,7 @@ import com.quatity.measurement.enums.LengthUnit;
 
 public class QuantityLength {
 
-	private final double value;
+    private final double value;
     private final LengthUnit unit;
 
 
@@ -28,5 +28,4 @@ public class QuantityLength {
 
         return Double.compare(thisValue, otherValue) == 0;
     }
-	
 }
