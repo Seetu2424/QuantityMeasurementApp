@@ -14,5 +14,6 @@ public class MeasurementApplication {
 		QuantityLength q2 = new QuantityLength(2.0, LengthUnit.YARDS);
 
 		System.out.println(q1.equals(q2));
+		
 		}
 }
