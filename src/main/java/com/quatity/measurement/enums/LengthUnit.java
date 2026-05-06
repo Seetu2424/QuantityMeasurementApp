@@ -1,31 +1,38 @@
 package com.quatity.measurement.enums;
 
-public enum LengthUnit {
-	
+public enum LengthUnit implements IMeasurable {
 
-	 FEET(1.0),
-	    INCH(1.0 / 12),
-	    YARDS(3.0),
-	    CENTIMETERS(1.0 / 30.48);
+    FEET(1.0),
+    INCH(1.0 / 12),
+    YARDS(3.0),
+    CENTIMETERS(1.0 / 30.48);
 
-	    private final double toFeetFactor;
+    private final double toFeetFactor;
 
-	    LengthUnit(double toFeetFactor) {
-	        this.toFeetFactor = toFeetFactor;
-	    }
+    LengthUnit(double toFeetFactor) {
+        this.toFeetFactor = toFeetFactor;
+    }
 
-	    public double convertToBaseUnit(double value) {
-	        if (!Double.isFinite(value)) {
-	            throw new IllegalArgumentException("Invalid value");
-	        }
-	        return value * toFeetFactor;
-	    }
+    @Override
+    public double getConversionFactor() {
+        return toFeetFactor;
+    }
 
-	    public double convertFromBaseUnit(double value) {
-	        if (!Double.isFinite(value)) {
-	            throw new IllegalArgumentException("Invalid value");
-	        }
-	        return value / toFeetFactor;
-	    }
-    
+    @Override
+    public double convertToBaseUnit(double value) {
+        validate(value);
+        return value * toFeetFactor;
+    }
+
+    @Override
+    public double convertFromBaseUnit(double value) {
+        validate(value);
+        return value / toFeetFactor;
+    }
+
+    private void validate(double value) {
+        if (!Double.isFinite(value)) {
+            throw new IllegalArgumentException("Invalid value");
+        }
+    }
 }
