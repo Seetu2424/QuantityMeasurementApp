@@ -32,11 +32,12 @@ public class QuantityWeight {
         Quantity<WeightUnit> result = quantity.toConvert(targetUnit);
         return new QuantityWeight(result.getValue(), result.getUnit());
     }
-@Override
-public boolean equals(Object o) {
-    if (!(o instanceof QuantityWeight)) {return false;
-    }
-    return this.quantity.equals(((QuantityWeight) o).quantity);
-}
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof QuantityWeight)) {
+            return false;
+        }
+        return this.quantity.equals(((QuantityWeight) o).quantity);
+    }
 }
