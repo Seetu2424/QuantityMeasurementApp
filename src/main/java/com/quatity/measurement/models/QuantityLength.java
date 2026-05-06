@@ -94,5 +94,4 @@ public class QuantityLength {
 
 	        return Math.abs(thisInFeet - otherInFeet) < EPSILON;
 	    }
-	    
 }
