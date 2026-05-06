@@ -1,4 +1,6 @@
-package com.quatity.measurement.enums;
+package com.quantity.measurement.enumsImpl;
+
+import com.quatity.measurement.enums.IMeasurable;
 
 public enum WeightUnit implements IMeasurable {
 

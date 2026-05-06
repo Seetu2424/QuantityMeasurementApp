@@ -2,7 +2,7 @@ package com.quatity.measurement;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.quatity.measurement.enums.LengthUnit;
+import com.quantity.measurement.enumsImpl.LengthUnit;
 import com.quatity.measurement.models.QuantityLength;
 
 @SpringBootApplication

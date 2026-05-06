@@ -1,10 +1,8 @@
 package com.quatity.measurement.models;
 
-import com.quatity.measurement.enums.WeightUnit;
+import com.quantity.measurement.enumsImpl.WeightUnit;
 
 public class QuantityWeight {
-
-
 
     private final Quantity<WeightUnit> quantity;
 
@@ -40,5 +38,4 @@ public boolean equals(Object o) {
     }
     return this.quantity.equals(((QuantityWeight) o).quantity);
 }
-	
 }
