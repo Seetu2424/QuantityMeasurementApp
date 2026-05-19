@@ -3,21 +3,61 @@ package com.quatity.measurement;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.quantity.measurement.enumsImpl.LengthUnit;
-import com.quatity.measurement.models.QuantityLength;
+import controller.Controller;
+import enumsImpl.LengthUnit;
+import models.QuantityLength;
+import repository.Repository;
+import repositoryImpl.DatabaseRepository;
+import serviceImpl.ServiceImpl;
+import service.*;
+import dto.QuantityDTO;
 
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @SpringBootApplication
 public class MeasurementApplication {
-		
+
+	private static final Logger LOGGER =
+			LoggerFactory.getLogger(MeasurementApplication.class);
 
 	public static void main(String[] args) {
-		//SpringApplication.run(MeasurementApplication.class, args);
 
-		QuantityLength q1 = new QuantityLength(2.0, LengthUnit.CENTIMETERS);
-		QuantityLength q2 = new QuantityLength(2.0, LengthUnit.YARDS);
+		SpringApplication.run(
+				MeasurementApplication.class,
+				args
+		);
 
-		System.out.println(q1.equals(q2));
+		Repository repository =
+				new DatabaseRepository();
+
+		var service =
+				new ServiceImpl(repository);
+
+		var controller =
+				new Controller(service);
+
+		// Example
+		var result = controller.performAdd(
+				new QuantityDTO(
+						1.0,
+						"FEET",
+						"LENGTH"
+				),
+				new dto.QuantityDTO(
+						12.0,
+						"INCH",
+						"LENGTH"
+				),
+				"FEET"
+		);
+
+		LOGGER.info(
+				"Result Value: {}",
+				result.getValue()
+		);
 	}
 }

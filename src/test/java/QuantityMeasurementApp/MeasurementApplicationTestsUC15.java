@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import controller.Controller;
 import dto.QuantityDTO;
 import entity.Entity;
-import repository.CacheRepository;
 import repository.Repository;
+import repositoryImpl.CacheRepository;
 import service.Service;
 import serviceImpl.ServiceImpl;
 
@@ -31,47 +31,46 @@ public class MeasurementApplicationTestsUC15 {
 	    // --- Entity Tests ---
 
 	    @Test
-	    void testQuantityEntity_SingleOperandConstruction() {
-	        Entity entity = new Entity("CONVERT", "1.0 FEET", "12.0 INCH");
-	        assertEquals("CONVERT", entity.getOperation());
-	        assertEquals("1.0 FEET", entity.getInput());
-	        assertEquals("12.0 INCH", entity.getResult());
-	        assertFalse(entity.hasError());
+	    void testQuantityEntity_Properties() {
+	        Entity entity = new Entity();
+	        entity.setOperationType("CONVERT");
+	        entity.setOperand1Value(1.0);
+	        entity.setOperand1Unit("FEET");
+	        entity.setResultValue(12.0);
+	        entity.setResultUnit("INCH");
+
+	        assertEquals("CONVERT", entity.getOperationType());
+	        assertEquals(1.0, entity.getOperand1Value());
+	        assertEquals("FEET", entity.getOperand1Unit());
+	        assertEquals(12.0, entity.getResultValue());
+	        assertEquals("INCH", entity.getResultUnit());
 	    }
 
 	    @Test
-	    void testQuantityEntity_BinaryOperandConstruction() {
-	        Entity entity = new Entity("ADD", "1.0 FEET + 1.0 FEET", "2.0 FEET");
-	        assertEquals("ADD", entity.getOperation());
-	        assertEquals("1.0 FEET + 1.0 FEET", entity.getInput());
-	        assertEquals("2.0 FEET", entity.getResult());
-	        assertFalse(entity.hasError());
+	    void testQuantityEntity_BinaryOperandProperties() {
+	        Entity entity = new Entity();
+	        entity.setOperationType("ADD");
+	        entity.setOperand1Value(1.0);
+	        entity.setOperand1Unit("FEET");
+	        entity.setOperand2Value(1.0);
+	        entity.setOperand2Unit("FEET");
+	        entity.setResultValue(2.0);
+	        entity.setResultUnit("FEET");
+
+	        assertEquals("ADD", entity.getOperationType());
+	        assertEquals(1.0, entity.getOperand1Value());
+	        assertEquals("FEET", entity.getOperand1Unit());
+	        assertEquals(1.0, entity.getOperand2Value());
+	        assertEquals("FEET", entity.getOperand2Unit());
+	        assertEquals(2.0, entity.getResultValue());
+	        assertEquals("FEET", entity.getResultUnit());
 	    }
 
 	    @Test
-	    void testQuantityEntity_ErrorConstruction() {
-	        Entity entity = new Entity("ADD", "Unsupported operation");
-	        assertEquals("ADD", entity.getOperation());
-	        assertNull(entity.getInput());
-	        assertEquals("Unsupported operation", entity.getResult());
-	        assertTrue(entity.hasError());
-	    }
-
-	    @Test
-	    void testQuantityEntity_ToString_Success() {
-	        Entity entity = new Entity("CONVERT", "1.0 FEET", "12.0 INCH");
-	        String str = entity.toString();
-	        assertTrue(str.contains("CONVERT"));
-	        assertTrue(str.contains("1.0 FEET"));
-	        assertTrue(str.contains("12.0 INCH"));
-	    }
-
-	    @Test
-	    void testQuantityEntity_ToString_Error() {
-	        Entity entity = new Entity("ADD", "Error occurred");
-	        String str = entity.toString();
-	        assertTrue(str.contains("ADD"));
-	        assertTrue(str.contains("Error occurred"));
+	    void testQuantityEntity_MeasurementType() {
+	        Entity entity = new Entity();
+	        entity.setMeasurementType("LENGTH");
+	        assertEquals("LENGTH", entity.getMeasurementType());
 	    }
 
 	    // --- Service Tests ---
@@ -297,11 +296,10 @@ public class MeasurementApplicationTestsUC15 {
 	    }
 
 	    @Test
-	    void testEntity_Immutability() {
-	        Entity entity = new Entity("ADD", "1+1", "2");
-	        assertEquals("ADD", entity.getOperation());
-	        assertEquals("1+1", entity.getInput());
-	        assertEquals("2", entity.getResult());
+	    void testEntity_IdProperty() {
+	        Entity entity = new Entity();
+	        entity.setId(100L);
+	        assertEquals(100L, entity.getId());
 	    }
 
 	    @Test

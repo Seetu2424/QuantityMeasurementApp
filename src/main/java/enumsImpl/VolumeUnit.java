@@ -1,6 +1,6 @@
-package com.quantity.measurement.enumsImpl;
+package enumsImpl;
 
-import com.quatity.measurement.enums.IMeasurable;
+import enums.IMeasurable;
 
 public enum VolumeUnit implements IMeasurable {
 

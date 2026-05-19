@@ -9,14 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import com.quatity.measurement.MeasurementApplication;
-import com.quantity.measurement.enumsImpl.LengthUnit;
-import com.quantity.measurement.enumsImpl.TemperatureUnit;
-import com.quantity.measurement.enumsImpl.VolumeUnit;
-import com.quantity.measurement.enumsImpl.WeightUnit;
-import com.quatity.measurement.enums.IMeasurable;
-import com.quatity.measurement.models.Quantity;
-import com.quatity.measurement.models.QuantityLength;
-import com.quatity.measurement.models.QuantityWeight;
+
+import enums.IMeasurable;
+import enumsImpl.LengthUnit;
+import enumsImpl.TemperatureUnit;
+import enumsImpl.VolumeUnit;
+import enumsImpl.WeightUnit;
+import models.Quantity;
+import models.QuantityLength;
+import models.QuantityWeight;
 
 class MeasurementApplicationTests {
 	 private static final double EPSILON = 1e-6;
