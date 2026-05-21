@@ -4,8 +4,8 @@ import java.util.List;
 
 import entity.Entity;
 
-public interface Repository {
-	
+public interface Repository{
+
 	 // Save measurement
     void save(Entity entity);
 

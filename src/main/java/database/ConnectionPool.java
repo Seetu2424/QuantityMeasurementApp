@@ -30,32 +30,16 @@ public class ConnectionPool {
 
         try {
 
-            // Load H2 JDBC Driver
-            Class.forName("org.h2.Driver");
-
-            // Initialize pool connections
             for (int i = 0; i < INITIAL_SIZE; i++) {
 
-                availableConnections.offer(
-                        createConnection()
-                );
+                availableConnections.offer(createConnection());
 
                 currentSize++;
             }
 
-            System.out.println(
-                    "Connection Pool Initialized Successfully : "
-                            + currentSize
-            );
+        } catch (SQLException e) {
 
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-            throw new RuntimeException(
-                    "Failed to initialize connection pool",
-                    e
-            );
+            throw new RuntimeException("Failed to initialize connection pool", e);
         }
     }
 

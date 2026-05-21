@@ -6,48 +6,49 @@ import entity.Entity;
 import repository.Repository;
 
 public class CacheRepository implements Repository {
-	
-	 private static CacheRepository instance;
 
-	    private final List<Entity> cache = new ArrayList<>();
+	private static CacheRepository instance;
 
-	    private CacheRepository() {
-	    }
+    private final List<Entity> cache = new ArrayList<>();
 
-	    public static CacheRepository getInstance() {
-	        if (instance == null) {
-	            instance = new CacheRepository();
-	        }
-	        return instance;
-	    }
+    //constructor
+    private CacheRepository() {
+    }
 
-	    @Override
-	    public void save(Entity entity) {
-	        cache.add(entity);
-	    }
+    public static CacheRepository getInstance() {
+        if (instance == null) {
+            instance = new CacheRepository();
+        }
+        return instance;
+    }
 
-	    @Override
-	    public List<Entity> getAllMeasurements() {
-	        return List.of();
-	    }
+    @Override
+    public void save(Entity entity) {
+        cache.add(entity);
+    }
 
-	    @Override
-	    public List<Entity> getMeasurementsByOperation(String operationType) {
-	        return List.of();
-	    }
+    @Override
+    public List<Entity> getAllMeasurements() {
+        return List.of();
+    }
 
-	    @Override
-	    public List<Entity> getMeasurementsByType(String measurementType) {
-	        return List.of();
-	    }
+    @Override
+    public List<Entity> getMeasurementsByOperation(String operationType) {
+        return List.of();
+    }
 
-	    @Override
-	    public void deleteAll() {
+    @Override
+    public List<Entity> getMeasurementsByType(String measurementType) {
+        return List.of();
+    }
 
-	    }
+    @Override
+    public void deleteAll() {
 
-	    @Override
-	    public long getTotalCount() {
-	        return 0;
-	    }
-	}
+    }
+
+    @Override
+    public long getTotalCount() {
+        return 0;
+    }
+}

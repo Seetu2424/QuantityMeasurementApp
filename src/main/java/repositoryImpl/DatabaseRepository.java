@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 /**
  * JDBC-based repository implementation.
  */
-@org.springframework.stereotype.Repository
 public class DatabaseRepository implements Repository {
 
     private static final Logger LOGGER =
